@@ -8,10 +8,14 @@
 .container {
     width: 100%;
     min-height: 100vh;
-    /* background-color: red; */
     background: linear-gradient(135deg, #153677, #4e085f);
     padding: 10px;
 }
+
+/* .del-btn {
+    justify-self: center;
+} */
+
 .todo-app {
     width: 100%;
     max-width: 540px;
@@ -97,4 +101,7 @@ ul li span {
 }
 ul li span:hover {
     background: #edeef0;
+}
+#del-all-container {
+    margin-top: 20px; /* Adjust as needed */
 }
