@@ -37,7 +37,7 @@ listContainer.addEventListener("click", function(e){
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
         saveData();
-        toggleDelAllBtn();
+        // toggleDelAllBtn();
     }
     else if (e.target.tagName === "SPAN") {
         if (confirm("Are you sure you want to delete this tasks?")) {
@@ -53,7 +53,11 @@ function saveData() {
 }
 
 function showTask() {
-    listContainer.innerHTML = localStorage.getItem("data");
+    const storedData = localStorage.getItem("data");
+    if (storedData) {
+        listContainer.innerHTML = storedData;
+    }
+    toggleDelAllBtn(); // Ensure button visibility based on loaded tasks
 }
 
 function delAllTasks() {
@@ -63,7 +67,6 @@ function delAllTasks() {
         toggleDelAllBtn();
     }
 }
-toggleDelAllBtn();
 showTask(); //reload and the data still there
 
 
