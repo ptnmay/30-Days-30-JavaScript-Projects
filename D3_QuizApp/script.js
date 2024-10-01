@@ -9,10 +9,10 @@ const questions = [
         ]
     },
     {
-        question: "My fav food?",
+        question: "Guess?",
         answers: [
             { text: "Pizza", correct: true },
-            { text: "Bueger", correct: false },
+            { text: "Burger", correct: false },
             { text: "Vegan food", correct: false },
             { text: "Tom yum kung", correct: false },
         ]
@@ -63,6 +63,7 @@ function selectAns(e) {
     const isCorrect = selectBtn.dataset.correct === "true";
     if (isCorrect) {
         selectBtn.classList.add("correct");
+        score++;
     } else {
         selectBtn.classList.add("incorrect")
     }
@@ -74,5 +75,29 @@ function selectAns(e) {
     });
     nextBtn.style.display = "block";
 }
+
+function showScore() {
+    resetState();
+    questionElement.innerHTML = `Your socred ${score} out of ${questions.length}`;
+    nextBtn.innerHTML = "Play again";
+    nextBtn.style.display = "block";
+}
+
+function handleNext(){
+    curQuesIndex++;
+    if (curQuesIndex < questions.length) {
+        showQuestion();
+    } else {
+        showScore();
+    }
+}
+
+nextBtn.addEventListener("click", ()=>{
+    if (curQuesIndex < questions.length) {
+        handleNext();
+    } else {
+        startQuiz();
+    }
+});
 
 startQuiz();
