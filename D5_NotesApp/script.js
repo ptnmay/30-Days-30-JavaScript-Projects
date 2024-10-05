@@ -36,9 +36,15 @@ notesContainer.addEventListener("click", function(e){
 	}
 })
 
-document.addEventListener("keydown", event => {
-	if (event.key === "Enter") {
-		document.execCommand("insertLineBreak");
-		event.preventDefault();
+// document.addEventListener("keydown", event => {
+// 	if (event.key === "Enter") {
+// 		document.execCommand("insertLineBreak");
+// 		event.preventDefault();
+// 	}
+// });
+notesContainer.addEventListener("keydown", function(e){
+	if (e.key === "Enter" && document.activeElement.classList.contains("input-box")) {
+	e.preventDefault(); //Prevent default behavior
+	document.execCommand("insertHTML", false, "<br>"); //insert line break
 	}
-})
+	});
